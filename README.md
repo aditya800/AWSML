@@ -9,7 +9,7 @@ Despite its powerful performance and market share (or more than 50% in Q32018), 
 
 This guide not only provides a direct library of routines for various AWS services but also expands the functions of the ML stack which cannot be directly implemented such as AWS Comprehend (NLP). 
 
-Before using any of the functions, make sure that you have an AWS account (usage would be free unless you exceed some 50k requests a day). Create a cognito identity pool and CLI 
+It is assumed that you have created an AWS account and also created the cognito identity pool and CLI to configure AWS for your iOS application    
 
 1. Input Image and get back a list of objects/items/things in that picture / Use AWS for image recognition in Swift 
 
@@ -164,34 +164,34 @@ The following implementation example is from the AWS website itself, it is self-
 
 var audioPlayer = AVPlayer()
 
-func(text: String) {
+	func(text: String) {
 
-let input = AWSPollySynthesizeSpeechURLBuilderRequest()
+	let input = AWSPollySynthesizeSpeechURLBuilderRequest()
 
-// Text to synthesize
-input.text = text 
+	// Text to synthesize
+	input.text = text 
 
-// We expect the output in MP3 format
-input.outputFormat = AWSPollyOutputFormat.mp3
+	// We expect the output in MP3 format
+	input.outputFormat = AWSPollyOutputFormat.mp3
 
-// Choose the voice ID
-input.voiceId = AWSPollyVoiceId.joanna
+	// Choose the voice ID
+	input.voiceId = AWSPollyVoiceId.joanna
 
-// Create an task to synthesize speech using the given synthesis input
-let builder = AWSPollySynthesizeSpeechURLBuilder.default().getPreSignedURL(input)
+	// Create an task to synthesize speech using the given synthesis input
+	let builder = AWSPollySynthesizeSpeechURLBuilder.default().getPreSignedURL(input)
 
-// Request the URL for synthesis result
-builder.continueOnSuccessWith(block: { (awsTask: AWSTask<NSURL>) -> Any? in
-	// The result of getPresignedURL task is NSURL.
-	// Again, we ignore the errors in the example.
-	let url = awsTask.result!
+	// Request the URL for synthesis result
+	builder.continueOnSuccessWith(block: { (awsTask: AWSTask<NSURL>) -> Any? in
+		// The result of getPresignedURL task is NSURL.
+		// Again, we ignore the errors in the example.
+		let url = awsTask.result!
 
-	// Try playing the data using the system AVAudioPlayer
-	self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
-	self.audioPlayer.play()
+		// Try playing the data using the system AVAudioPlayer
+		self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
+		self.audioPlayer.play()
 
-	return nil
-}
+		return nil
+	}
 }
 
 For this example, the voice of Joanna is used. This voice can be of any other language or gender. To check the list of voices available for use, go here: https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
@@ -199,31 +199,31 @@ For this example, the voice of Joanna is used. This voice can be of any other la
 
 4.  Convert Speech to Text using Machine Learning / Using AWS Transcribe in Swift 
 
-var audioPlayer = AVPlayer()
+	var audioPlayer = AVPlayer()
 
-func(text: String) {
+	func(text: String) {
 
-let input = AWSTranscribeRequest()
+	let input = AWSTranscribeRequest()
 
-input.text = text 
+	input.text = text 
 
-// We expect the input in MP3 format
-input.outputFormat = Format.mp3
+	// We expect the input in MP3 format
+	input.outputFormat = Format.mp3
 
-// Create an task to synthesize speech using the given synthesis input
-let builder = AWSTranscribe.default().getPreSignedURL(input)
+	// Create an task to synthesize speech using the given synthesis input
+	let builder = AWSTranscribe.default().getPreSignedURL(input)
 
-// Request the URL for synthesis result
-builder.continueOnSuccessWith(block: { (awsTask: AWSTask<NSURL>) -> Any? in
-	// The result of getPresignedURL task is NSURL.
-	// Again, we ignore the errors in the example.
-	let url = awsTask.result!
+	// Request the URL for synthesis result
+	builder.continueOnSuccessWith(block: { (awsTask: AWSTask<NSURL>) -> Any? in
+		// The result of getPresignedURL task is NSURL.
+		// Again, we ignore the errors in the example.
+		let url = awsTask.result!
 
-	// Try playing the data using the system AVAudioPlayer
-	self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
-	self.audioPlayer.play()
+		// Try playing the data using the system AVAudioPlayer
+		self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
+		self.audioPlayer.play()
 
-	return nil
-}
-}
+		return nil
+	}
+	}
 
