@@ -199,31 +199,31 @@ For this example, the voice of Joanna is used. This voice can be of any other la
 
 4.  Convert Speech to Text using Machine Learning / Using AWS Transcribe in Swift 
 
-	var audioPlayer = AVPlayer()
+		var audioPlayer = AVPlayer()
 
-	func(text: String) {
+		func(text: String) {
 
-	let input = AWSTranscribeRequest()
+		let input = AWSTranscribeRequest()
 
-	input.text = text 
+		input.text = text 
 
-	// We expect the input in MP3 format
-	input.outputFormat = Format.mp3
+		// We expect the input in MP3 format
+		input.outputFormat = Format.mp3
 
-	// Create an task to synthesize speech using the given synthesis input
-	let builder = AWSTranscribe.default().getPreSignedURL(input)
+		// Create an task to synthesize speech using the given synthesis input
+		let builder = AWSTranscribe.default().getPreSignedURL(input)
 
-	// Request the URL for synthesis result
-	builder.continueOnSuccessWith(block: { (awsTask: AWSTask<NSURL>) -> Any? in
-		// The result of getPresignedURL task is NSURL.
-		// Again, we ignore the errors in the example.
-		let url = awsTask.result!
+		// Request the URL for synthesis result
+		builder.continueOnSuccessWith(block: { (awsTask: AWSTask<NSURL>) -> Any? in
+			// The result of getPresignedURL task is NSURL.
+			// Again, we ignore the errors in the example.
+			let url = awsTask.result!
 
-		// Try playing the data using the system AVAudioPlayer
-		self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
-		self.audioPlayer.play()
+			// Try playing the data using the system AVAudioPlayer
+			self.audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: url as URL))
+			self.audioPlayer.play()
 
-		return nil
-	}
-	}
+			return nil
+		}
+		}
 
