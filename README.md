@@ -1,7 +1,6 @@
-# AWSML
-An Idiot's Guide to Implementing AWS's ML Services in iOS Applications 
+# An Idiot's Guide to Implementing AWS's ML Services in iOS Applications 
 
-This is a comprehensive easy to understand, dumbed-down, standardised library, guide or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects.
+This is a comprehensive easy to understand, dumbed-down, one stop standardised library, guide or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects. Since Amazon Personalise and Amazon Forecast are not yet released, this guide does not account for them. 
 
 This was first uploaded elsewhere, but I have now moved it here. It is the same document.
 
@@ -11,7 +10,7 @@ This guide not only provides a direct library of routines for various AWS servic
 
 It is assumed that you have created an AWS account and also created the cognito identity pool and CLI to configure AWS for your iOS application    
 
-1. Input Image and get back a list of objects/items/things in that picture / Use AWS for image recognition in Swift 
+# 1. Input Image and get back a list of objects/items/things in that picture / Use AWS for image recognition in Swift 
 
 This is fairly simple, once you have stored the image as a variable, you can use AWS Rekognition to convert it into a list:
 
@@ -69,7 +68,7 @@ func convertToList(image: UIImage) {
     }
 
 
-2. Detect celebrity faces in a given image / Use AWS for recognising celebrities in Swift 
+# 2. Detect celebrity faces in a given image / Use AWS for recognising celebrities in Swift 
 
 This is done by using the AWS Celebrities Request in the rekognition api. 
 
@@ -154,7 +153,7 @@ func sendImageToRekognition(celebImageData: Data){
     }
 
 
-3. Converting Text to Speech Using Machine Learning / Use AWS Polly to convert Text to Speech
+# 3. Converting Text to Speech Using Machine Learning / Use AWS Polly to convert Text to Speech
 
 Mentioning machine learning is important because non ML apis also exist to perform TTS. The use of ML apis, however, for TTS ensures a low latency and high quality translation. In other words, this is more human and natural translation of the text which can be customised as opposed to a robotic one.
 
@@ -197,7 +196,7 @@ var audioPlayer = AVPlayer()
 For this example, the voice of Joanna is used. This voice can be of any other language or gender. To check the list of voices available for use, go here: https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
 
 
-4.  Convert Speech to Text using Machine Learning / Using AWS Transcribe in Swift 
+# 4.  Convert Speech to Text using Machine Learning / Using AWS Transcribe in Swift 
 
 		var audioPlayer = AVPlayer()
 
