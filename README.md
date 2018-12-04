@@ -1,6 +1,6 @@
 # An Idiot's Guide to Implementing AWS's ML Services in iOS 
 
-This is a comprehensive easy to understand, dumbed-down, one stop standardised library, guide or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects. Since Amazon Personalise and Amazon Forecast are not yet released, this guide does not account for them. 
+This is a comprehensive easy to understand, dumbed-down, one stop standardised library, guide or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects. Since Amazon Personalise and Amazon Forecast are not yet released, this guide does not include them. 
 
 This was first uploaded elsewhere, but I have now moved it here. It is the same document.
 
