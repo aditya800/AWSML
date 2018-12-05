@@ -250,7 +250,8 @@ aws translate translate-text \
  Result: A French Translation hould be displayed
  
  Code: 
- 
+ 	 
+	 func translate(text: String) {
 	 var credentialsProvider = AWSStaticCredentialsProvider(accessKey: "access key", secretKey:
 	 "secret key")
 	var configuration = AWSServiceConfiguration(region: AWSRegionUSEast1, credentialsProvider:
@@ -261,7 +262,7 @@ aws translate translate-text \
 	let translateRequest = AWSTranslateTranslateTextRequest()
 	translateRequest?.sourceLanguageCode = "en"
 	translateRequest?.targetLanguageCode = "es"
-	translateRequest?.text = "Hello World"
+	translateRequest?.text = string
 
 	let callback: (AWSTranslateTranslateTextResponse?, Error?) -> Void = { (response, error) in
 	 guard let response = response else {
@@ -275,6 +276,36 @@ aws translate translate-text \
 	}
 
 	translateClient.translateText(translateRequest!, completionHandler: callback)
+
+
+6. Use Aws Comprehend's sentiment detection in Swift
+
+		func example() {
+
+		var text = "It is raining today in Seattle";
+
+		// Create credentials using a provider chain. For more information, see
+		// https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
+			AWSCredentialsProvider awsCreds = DefaultAWSCredentialsProviderChain.getInstance();
+
+			AmazonComprehend comprehendClient =
+		   	 AmazonComprehendClientBuilder.standard()
+						 .withCredentials(awsCreds)
+						 .withRegion("region")
+						 .build();
+
+		// Call detectSentiment API
+		print("Calling DetectSentiment");
+		DetectSentimentRequest detectSentimentRequest = new DetectSentimentRequest().withText(text)
+											    .withLanguageCode("en");
+		DetectSentimentResult detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
+		print(detectSentimentResult);
+
+	    }
+
+	}
+
+
 
 
 
