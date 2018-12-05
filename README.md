@@ -2,9 +2,9 @@
 
 This is a comprehensive easy to understand, dumbed-down, one stop standardised library, guide or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects. Since Amazon Personalise and Amazon Forecast are not yet released, this guide does not include them. 
 
-This was first uploaded elsewhere, but I have now moved it here. It is the same document.
+This was first uploaded elsewhere, but I have now moved it here. It is the same document. 
 
-Despite its powerful performance and market share (or more than 50% in Q32018), AWS ML is still seen as something like a black box 
+Despite its powerful performance and market share (or more than 50% in Q32018), AWS ML is still seen as something like a black box. 
 
 This guide not only provides a direct library of routines for various AWS services but also expands the functions of the ML stack which cannot be directly implemented such as AWS Comprehend (NLP). 
 
@@ -225,4 +225,58 @@ For this example, the voice of Joanna is used. This voice can be of any other la
 			return nil
 		}
 		}
+
+
+5. Translate words from one language to another / Use AWS Translate in Swift 
+
+Non-iOS Usage/Example: 
+
+1. Copy the following text into a JSON file called translate.json:
+
+{
+ "Text": "Amazon Translate translates documents between languages in
+ real time. It uses advanced machine learning technologies
+ to provide high-quality real-time translation. Use it to
+ translate documents or to build applications that work in
+ multiple languages.",
+ "SourceLanguageCode": "en",
+ "TargetLanguageCode": "fr"
+}
+
+aws translate translate-text \
+ --region region \
+ --cli-input-json file://translate.json > translated.json
+ 
+ Result: A French Translation hould be displayed
+ 
+ Code: 
+ 
+	 var credentialsProvider = AWSStaticCredentialsProvider(accessKey: "access key", secretKey:
+	 "secret key")
+	var configuration = AWSServiceConfiguration(region: AWSRegionUSEast1, credentialsProvider:
+	 credentialsProvider)
+
+	 AWSServiceManager.default().defaultServiceConfiguration = configuration
+	let translateClient = AWSTranslate.default()
+	let translateRequest = AWSTranslateTranslateTextRequest()
+	translateRequest?.sourceLanguageCode = "en"
+	translateRequest?.targetLanguageCode = "es"
+	translateRequest?.text = "Hello World"
+
+	let callback: (AWSTranslateTranslateTextResponse?, Error?) -> Void = { (response, error) in
+	 guard let response = response else {
+	 print("Got error \(error)")
+	 return
+	 }
+
+	 if let translatedText = response.translatedText {
+	 print(translatedText)
+	 }
+	}
+
+	translateClient.translateText(translateRequest!, completionHandler: callback)
+
+
+
+
 
