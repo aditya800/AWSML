@@ -1,12 +1,12 @@
 # An Idiot's Guide to Implementing AWS's ML Services in iOS 
 
-This is a comprehensive easy to understand, dumbed-down, one stop standardised library, guide or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects. Since Amazon Personalise and Amazon Forecast are not yet released, this guide does not include them. 
+This is a comprehensive, easy to understand, dumbed-down, one stop library, guide, or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects. Since Amazon Personalise and Amazon Forecast are not yet released, this guide does not include them. 
 
-This was first uploaded elsewhere, but I have now moved it here. It is the same document. 
+This was first uploaded elsewhere, but I have now moved it here. It is the same document. It is not available on Kindle.  
 
 Despite its powerful performance and market share (or more than 50% in Q32018), AWS ML is still seen as something like a black box. 
 
-This guide not only provides a direct library of routines for various AWS services but also expands the functions of the ML stack which cannot be directly implemented such as AWS Comprehend (NLP). 
+This guide not only provides a direct library of routines for various AWS services but also expands the functions of those ML services that cannot be directly implemented in a native environment such as AWS Comprehend (NLP). 
 
 It is assumed that you have created an AWS account and also created the cognito identity pool and CLI to configure AWS for your iOS application    
 
@@ -14,7 +14,7 @@ It is assumed that you have created an AWS account and also created the cognito 
 
 This is fairly simple, once you have stored the image as a variable, you can use AWS Rekognition to convert it into a list:
 
-func convertToList(image: UIImage) {
+	func convertToList(image: UIImage) {
         
         let sourceImage = image
         let rekognitionClient = AWSRekognition.default()
@@ -161,7 +161,7 @@ Amazon uses Polly to perform conversions
 
 The following implementation example is from the AWS website itself, it is self-explanatory and easy to understand:
 
-var audioPlayer = AVPlayer()
+	var audioPlayer = AVPlayer()
 
 	func(text: String) {
 
