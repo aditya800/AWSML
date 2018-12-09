@@ -4,7 +4,7 @@ This is a comprehensive, easy to understand, dumbed-down, one stop library, guid
 
 This was first uploaded elsewhere, but I have now moved it here. It is the same document. It is not available on Kindle.  
 
-Despite its powerful performance and market share (or more than 50% in Q32018), AWS ML is still seen as something like a black box. 
+Despite its powerful performance and market share (more than 50% in Q32018), AWS ML is still seen as something like a black box. 
 
 This guide not only provides a direct library of routines for various AWS services but also expands the functions of those ML services that cannot be directly implemented in a native environment such as AWS Comprehend (NLP). 
 
