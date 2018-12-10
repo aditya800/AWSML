@@ -1,8 +1,8 @@
-# An Idiot's Guide to Implementing AWS's ML Services in iOS: Part 1
+# An Idiot's Guide to Implementing AWS's ML Services in iOS: Sample
 
 This is a comprehensive, easy to understand, dumbed-down, one stop library, guide, or cheat sheet to leverage the AWS ML suite of applications in your iOS app for hackathons or personal projects. Since Amazon Personalise and Amazon Forecast are not yet released, this guide does not include them. 
 
-This was first uploaded elsewhere, but I have now moved it here. It is the same document. It is not available on Kindle.  
+(This is only a sample. Please purchase the document for access to all functions).  
 
 Despite its powerful performance and market share (more than 50% in Q32018), AWS ML is still seen as something like a black box. 
 
@@ -72,7 +72,7 @@ This is fairly simple, once you have stored the image as a variable, you can use
 
 This is done by using the AWS Celebrities Request in the rekognition api. 
 
-func sendImageToRekognition(celebImageData: Data){
+	func sendImageToRekognition(celebImageData: Data){
         
         //Delete older labels or buttons
         DispatchQueue.main.async {
